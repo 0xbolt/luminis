@@ -1,10 +1,6 @@
 # hypatia-lite
+Monorepo for my work under Olivier Chapuis at LISN.
 
-### hypatia-unity
-Unity, etc.
-
-### hypatia-cpp
-OpenVDB, etc.
-
-### hypatia-python
-Data manipulation/analysis, etc.
+- hypatia-unity
+- hypatia-cpp
+- hypatia-python
