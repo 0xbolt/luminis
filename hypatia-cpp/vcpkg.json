@@ -1,0 +1,26 @@
+{
+  "name": "hypatia-cpp",
+  "version-string": "0.1.0",
+  "builtin-baseline": "a664e41ee50b61adcc90a44a761eca139a4b7dd7",
+  "dependencies": [
+    {
+      "name": "glad",
+      "features": [
+        "gl-api-41"
+      ],
+      "version>=": "0.1.36"
+    },
+    {
+      "name": "glfw3",
+      "version>=": "3.4"
+    },
+    {
+      "name": "imgui",
+      "features": [
+        "glfw-binding",
+        "opengl3-binding"
+      ],
+      "version>=": "1.90"
+    }
+  ]
+}
