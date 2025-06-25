@@ -1,7 +1,7 @@
-# hypatia-lite
+# luminis
 Monorepo for my work under Olivier Chapuis at LISN.
 
-hypatia-lite is subdivided into three parts:
-- hypatia-unity
-- hypatia-cpp
-- hypatia-python
+luminis is subdivided into three parts:
+- luminis-unity
+- luminis-cpp
+- luminis-python
