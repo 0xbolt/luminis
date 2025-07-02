@@ -16,11 +16,7 @@ def save_csv(df: pd.DataFrame, filename: str, overwrite: bool = False):
         raise Exception(f"{path} already exists")
     df.to_csv(path, index=False)
 
-def init_position_deltas(X: pd.DataFrame):
-    """Randomly initialize position deltas"""
-    X.d_dist = np.random.normal(0, X.sigma_dist)
-
-def calculate_xyz(X: pd.DataFrame):
+def calculate_xyz(X: pd.DataFrame, d_pos: bool = False):
     ra = np.radians(X.ra)
     dec = np.radians(X.dec)
 
@@ -33,18 +29,27 @@ def calculate_xyz(X: pd.DataFrame):
     z = X.dist * proj_z
     df = pd.DataFrame({'x': x, 'y': y, 'z': z})
 
-    dx = dy = dz = np.full_like(X.dist, np.nan)
-    if 'd_dist' in X.columns:
-        dx = X.d_dist * proj_x
-        dy = X.d_dist * proj_y
-        dz = X.d_dist * proj_z
-    df = pd.concat([df, pd.DataFrame({'dx': dx, 'dy': dy, 'dz': dz})], axis=1)
+    if d_pos:
+        dx = dy = dz = np.full_like(X.dist, np.nan)
+        if 'd_dist' in X.columns:
+            dx = X.d_dist * proj_x
+            dy = X.d_dist * proj_y
+            dz = X.d_dist * proj_z
+        df = pd.concat([df, pd.DataFrame({'dx': dx, 'dy': dy, 'dz': dz})], axis=1)
     return df
 
 def init_sigma_dist_proportional(X: pd.DataFrame, c: float = 0.01):
     """Initialize sigma_dist proportional to log dist"""
     X['sigma_dist'] = np.log(1 + X.dist) * c
 
+def init_sigma_dist_const(X: pd.DataFrame, value: float):
+    """Initialize sigma_dist to a constant value"""
+    X['sigma_dist'] = value
+
 def init_sigma_dist_normal(X: pd.DataFrame, mean: float, stddev: float = 0):
     """Initialize sigma_dist with a normal distribution"""
-    X['sigma_dist'] = np.random.normal(mean, stddev, len(X))
+    X['sigma_dist'] = np.abs(np.random.normal(mean, stddev, len(X)))
+
+def init_position_deltas(X: pd.DataFrame):
+    """Randomly initialize position deltas"""
+    X.d_dist = np.random.normal(0, X.sigma_dist)
