@@ -59,8 +59,8 @@ public class LerpCsvMain : MonoBehaviour {
         for (int i = 0; i < _records0.Count; i++) {
             var r0 = _records0[i];
             var r1 = _records1[i];
-            var pos0 = new Vector3(r0.X, r0.Y, r0.Z);
-            var pos1 = new Vector3(r1.X, r1.Y, r1.Z);
+            var pos0 = CelestialBody.GetXYZ(r0);
+            var pos1 = CelestialBody.GetXYZ(r1);
             var pos = (1 - lerpT) * pos0 + lerpT * pos1;
 
             mpb.SetColor("_Color", colors[i]);
