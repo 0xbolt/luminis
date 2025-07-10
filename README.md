@@ -17,6 +17,7 @@ luminis is subdivided into three parts:
 - [Cosmic Flows 4 Home](https://projets.ip2i.in2p3.fr/cosmicflows/)
 - [DESI Data Documentation](https://data.desi.lbl.gov/doc/)
 - [Cosmic flow model of our Local Universe](https://cosmicflows.iap.fr)
+- Gaia, Euclid, NED, Chandra.
 
 ## References
 - [Visualization in Astrophysics: Developing New Methods, Discovering Our Universe, and Educating the Earth (Lan et al. 2021)](https://arxiv.org/pdf/2106.00152)
